@@ -1,6 +1,6 @@
 import json
 from calendar import monthrange
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from .db import get_connection
 
@@ -119,12 +119,15 @@ def reconcile_certificate(db_path, certificate_row):
     conn.close(); return {'status': 'ok', 'message': 'Certificate reconciles correctly'}
 
 
+REF_DATE = datetime(2026, 1, 1)
+
+
 def generate_alerts(db_path=None):
     conn = get_connection(db_path)
     alerts = []
     for idx, row in enumerate(conn.execute('SELECT instrument_id, next_due_date FROM instrument WHERE next_due_date IS NOT NULL').fetchall()):
         due = parse_date(row['next_due_date'])
-        if due and due < datetime.utcnow().date():
+        if due and due < REF_DATE.date():
             alerts.append({
                 'alert_id': f'ALR-{row["instrument_id"]}-OVERDUE',
                 'alert_type': 'overdue_calibration',

@@ -11,6 +11,7 @@ from .db import get_connection, init_db
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SEED = 20261022
+REFERENCE_DATE = datetime(2026, 1, 1, 0, 0, 0)
 
 
 def _iso(dt):
@@ -61,7 +62,7 @@ def generate_dataset(mode='starter', seed=SEED, database_path=None):
 
     asset_rows = []
     for idx in range(1, 250):
-        asset_rows.append((f'ASSET-{idx:06d}', f'Line {idx}', 'Packaging', 'Plant A', 'North', _iso_dt(datetime.utcnow() - timedelta(days=idx * 3))))
+        asset_rows.append((f'ASSET-{idx:06d}', f'Line {idx}', 'Packaging', 'Plant A', 'North', _iso_dt(REFERENCE_DATE - timedelta(days=idx * 3))))
     conn.executemany('INSERT INTO asset (asset_id, name, category, site, region, created_at) VALUES (?, ?, ?, ?, ?, ?)', asset_rows)
 
     types = [
@@ -163,7 +164,7 @@ def generate_dataset(mode='starter', seed=SEED, database_path=None):
     for row in conn.execute('SELECT * FROM calibration_event WHERE pass_fail = "fail" ORDER BY calibration_date LIMIT 10').fetchall():
         conn.execute(
             'INSERT INTO impact_assessment (assessment_id, calibration_event_id, instrument_id, risk_level, description, created_at) VALUES (?, ?, ?, ?, ?, ?)',
-            (f'IA-{row["instrument_id"]}-{row["calibration_id"]}', row['calibration_id'], row['instrument_id'], 'High', 'Failed calibration requires product impact review and containment.', _iso_dt(datetime.utcnow()))
+            (f'IA-{row["instrument_id"]}-{row["calibration_id"]}', row['calibration_id'], row['instrument_id'], 'High', 'Failed calibration requires product impact review and containment.', _iso_dt(REFERENCE_DATE))
         )
 
     conn.commit()
