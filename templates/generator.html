@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Data Generator{% endblock %}
+{% block content %}
+<h1>Data Generator</h1>
+<div class="generator-panel">
+  <button data-mode="starter" class="primary-btn generate-btn">Generate Starter Dataset</button>
+  <button data-mode="full" class="primary-btn generate-btn">Generate Full Dataset</button>
+  <button id="validate-btn" class="secondary-btn">Validate Dataset</button>
+</div>
+<div id="generator-output" class="status-box">Ready</div>
+{% endblock %}

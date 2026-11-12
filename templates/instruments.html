@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Instruments{% endblock %}
+{% block content %}
+<h1>Instruments</h1>
+<table class="table">
+  <thead><tr><th>Instrument ID</th><th>Name</th><th>Asset</th><th>Location</th><th>Next Due</th><th>Status</th></tr></thead>
+  <tbody>
+    {% for row in instruments %}
+    <tr><td>{{ row.instrument_id }}</td><td>{{ row.name }}</td><td>{{ row.asset_id }}</td><td>{{ row.location }}</td><td>{{ row.next_due_date }}</td><td>{{ row.status }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

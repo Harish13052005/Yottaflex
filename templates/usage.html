@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Production Usage{% endblock %}
+{% block content %}
+<h1>Production Usage</h1>
+<table class="table">
+  <thead><tr><th>Usage ID</th><th>Instrument</th><th>Line</th><th>Timestamp</th><th>Permission</th></tr></thead>
+  <tbody>
+    {% for row in usage_rows %}
+    <tr><td>{{ row.usage_id }}</td><td>{{ row.instrument_id }}</td><td>{{ row.production_line }}</td><td>{{ row.usage_timestamp }}</td><td>{{ row.usage_permission }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Alerts{% endblock %}
+{% block content %}
+<h1>Alerts & Anomalies</h1>
+<table class="table">
+  <thead><tr><th>Alert ID</th><th>Type</th><th>Entity</th><th>Severity</th><th>Message</th></tr></thead>
+  <tbody>
+    {% for row in alerts %}
+    <tr><td>{{ row.alert_id }}</td><td>{{ row.alert_type }}</td><td>{{ row.entity_id }}</td><td>{{ row.severity }}</td><td>{{ row.message }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

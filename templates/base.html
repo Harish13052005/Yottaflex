@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}YottaFlex{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">YF</div>
+          <div>
+            <div class="brand-name">YottaFlex.ai</div>
+            <div class="brand-sub">Calibration Ops</div>
+          </div>
+        </div>
+        <nav>
+          <a href="/dashboard" class="nav-item">Overview Dashboard</a>
+          <a href="/instruments" class="nav-item">Instruments</a>
+          <a href="/calibration" class="nav-item">Calibration Schedule</a>
+          <a href="/certificates" class="nav-item">Certificates</a>
+          <a href="/work-orders" class="nav-item">Work Orders</a>
+          <a href="/usage" class="nav-item">Production Usage</a>
+          <a href="/alerts" class="nav-item">Alerts & Anomalies</a>
+          <a href="/quality" class="nav-item">Data Quality</a>
+          <a href="/audit" class="nav-item">Audit Trail</a>
+          <a href="/generator" class="nav-item">Data Generator</a>
+          <a href="/settings" class="nav-item">Settings</a>
+        </nav>
+      </aside>
+      <main class="content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

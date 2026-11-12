@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Certificates{% endblock %}
+{% block content %}
+<h1>Certificates</h1>
+<table class="table">
+  <thead><tr><th>Certificate ID</th><th>Instrument</th><th>Issue Date</th><th>Expiry</th><th>Verification</th></tr></thead>
+  <tbody>
+    {% for row in certificates %}
+    <tr><td>{{ row.certificate_id }}</td><td>{{ row.instrument_id }}</td><td>{{ row.issue_date }}</td><td>{{ row.expiry_date }}</td><td>{{ row.verification_status }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

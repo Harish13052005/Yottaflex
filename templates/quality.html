@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Data Quality{% endblock %}
+{% block content %}
+<h1>Data Quality</h1>
+<div class="summary-box">
+  <p>Total checked: {{ report.total_records_checked }}</p>
+  <p>Passed: {{ report.passed_validations }}</p>
+  <p>Failed: {{ report.failed_validations }}</p>
+  <p>Referential integrity: {{ report.referential_integrity_score }}%</p>
+  <p>Duplicate count: {{ report.duplicate_count }}</p>
+</div>
+{% if report.errors %}
+<ul>
+  {% for e in report.errors %}
+  <li>{{ e }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

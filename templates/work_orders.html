@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Work Orders{% endblock %}
+{% block content %}
+<h1>Work Orders</h1>
+<table class="table">
+  <thead><tr><th>WO ID</th><th>Instrument</th><th>Type</th><th>Priority</th><th>Status</th><th>Downtime</th></tr></thead>
+  <tbody>
+    {% for row in work_orders %}
+    <tr><td>{{ row.work_order_id }}</td><td>{{ row.instrument_id }}</td><td>{{ row.work_order_type }}</td><td>{{ row.priority }}</td><td>{{ row.work_order_status }}</td><td>{{ row.downtime_duration }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
