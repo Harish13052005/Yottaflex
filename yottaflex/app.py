@@ -10,6 +10,15 @@ from .generator import generate_dataset, reproducibility_report
 from .validation import run_validation
 
 
+def _ensure_seed_data(db_path):
+    conn = get_connection(db_path)
+    has_data = conn.execute('SELECT COUNT(*) FROM instrument').fetchone()[0] > 0
+    conn.close()
+    if not has_data:
+        return generate_dataset('starter', seed=20261022, database_path=db_path)
+    return {'dataset': 'existing', 'seed': 20261022, 'instrument_count': 0}
+
+
 def create_app():
     app = Flask(
         __name__,
@@ -19,6 +28,7 @@ def create_app():
     app.config.from_object(Config)
     os.makedirs(os.path.dirname(app.config['DATABASE_PATH']) or '.', exist_ok=True)
     init_db(app.config['DATABASE_PATH'])
+    _ensure_seed_data(app.config['DATABASE_PATH'])
 
     @app.route('/')
     def index():
