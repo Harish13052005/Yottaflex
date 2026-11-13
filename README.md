@@ -4,9 +4,7 @@ YottaFlex.ai is a production-style industrial calibration and compliance workspa
 
 ## Demo preview
 
-![YottaFlex dashboard preview](docs/assets/yottaflex-dashboard.png)
-
-![YottaFlex dashboard animation](docs/assets/yottaflex-dashboard.gif)
+![YottaFlex dashboard preview](docs/assets/yottaflex-dashboard.jpeg)
 
 ## Live deployment status
 
