@@ -8,15 +8,11 @@ YottaFlex.ai is a production-style industrial calibration and compliance workspa
 
 ## Live deployment status
 
-This repository is configured for deployment on Render. A public deployment link can only be created after the repository is connected to a Render account and the service is deployed from this GitHub repository.
+**Live demo:** [https://yottaflex.onrender.com](https://yottaflex.onrender.com)
 
-Deployment-ready files added:
-- `render.yaml`
-- `Procfile`
-- `runtime.txt`
+The public dashboard is available at [https://yottaflex.onrender.com/dashboard](https://yottaflex.onrender.com/dashboard), and the dashboard API is at [https://yottaflex.onrender.com/api/dashboard](https://yottaflex.onrender.com/api/dashboard).
 
-Once the project is connected to Render, the app will be published at a public URL in the format:
-`https://<service-name>.onrender.com`
+The service is deployed on Render's free plan. Free instances may spin down after inactivity, so the first request can take a little longer while the service starts.
 
 ## Features
 - Instrument lifecycle management with immutable identifiers
